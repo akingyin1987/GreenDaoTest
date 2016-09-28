@@ -55,24 +55,17 @@ public class MainActivity extends AppCompatActivity {
     Cursor cursor = contentResolver.query(contentUri, null, null, null, null);
     System.out.println("null == cursor"+(null == cursor));
     if(null != cursor){
-
-      if(cursor.moveToFirst()){
         String[]  columns = cursor.getColumnNames();
-
         while (cursor.moveToNext()){
           User  userEntity = new User();
-
           userEntity.arg = cursor.getString(cursor.getColumnIndex("ARG"));
-
           userEntity.account = cursor.getString(cursor.getColumnIndex("ACCOUNT"));
-
           userEntity.uuid = cursor.getString(cursor.getColumnIndex("UUID"));
-
           userEntity.setId(cursor.getLong(cursor.getColumnIndex(BaseColumns._ID)));
           data.add(userEntity);
         }
         cursor.close();
       }
-    }
+
   }
 }
